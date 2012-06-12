@@ -11,8 +11,11 @@
             this.superInit();
             
             var label = tm.app.Label(32,32);
-            label.x = label.y = 120;
-            label.text = userData.score;
+            label.x = app.width/2;
+            label.y = app.height/2;
+            label.text = "score : "+userData.score;
+            label.width = app.width;
+            label.align = "center";
             this.addChild(label);
         },
     

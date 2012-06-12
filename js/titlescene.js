@@ -12,8 +12,10 @@
             this.superInit();
             
             var label = tm.app.Label(32,32);
-            label.x = label.y = 120;
-            label.text = "title";
+            label.x = app.width/2;
+            label.y = app.height/2;
+            label.text = "Chain Wave";
+            label.width = app.width
             this.addChild(label);
         },
     
