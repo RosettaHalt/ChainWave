@@ -34,7 +34,7 @@
         },
         
         newWave: function(x,y){
-            var wave = Wave(x, y, 1000, REVERSE_WAVE_IMAGE);
+            var wave = Wave(x, y, 1000, 256, REVERSE_WAVE_IMAGE);
             wave.particle.interaction.setBoundingType("circle");
             this.addChild(wave);
             
@@ -85,42 +85,4 @@ var Circle = tm.createClass({
         c.lineWidth = 2;
         c.strokeCircle(0, 0, this.radius+1);
     },
-});
-
-/**
- * 波紋
- */
-var Wave = tm.createClass({
-    superClass: tm.app.CanvasElement,
-
-    init: function(x, y, time, img) {
-        this.superInit();
-        this.x = x;
-        this.y = y;
-        this.plusScale = 0.8/30;
-
-        this.particle = tm.app.Sprite(256, 256);
-        this.particle.setImage(img);
-        this.particle.scaleX = this.particle.scaleY = 0.2;
-        var self = this;
-        this.particle.update = function(){
-            this.scaleX += self.plusScale;
-            this.scaleY += self.plusScale;
-        }
-        this.addChild(this.particle);
-        this.fadeOut(time);
-    },
-
-    fadeOut: function(time) {
-        this.animation.addTween({
-            prop: "alpha",
-            begin: 1,
-            finish: 0,
-            duration: time
-        });
-    },
-    
-    onanimationend: function() {
-        this.remove();
-    }
 });
