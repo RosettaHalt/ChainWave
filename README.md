@@ -2,6 +2,7 @@
 
 波紋を球にぶつけて連鎖されるゲームです。
 
+- [Chain Wave](http://rosettahalt.github.com/ChainWave/)
 
 ## ルール
 
