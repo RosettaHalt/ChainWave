@@ -17,6 +17,13 @@
             label.width = app.width;
             label.align = "center";
             this.addChild(label);
+
+            var tweetButton = tm.twitter.TweetButton(
+                "Score : {0}連鎖\n http://rosettahalt.github.com/ChainWave/ #ChainWave #tmlibjs".format(userData.score)
+            );
+            tweetButton.x = app.width/2;
+            tweetButton.y = 480;
+            this.addChild(tweetButton);
         },
     
         update: function(){
