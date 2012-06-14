@@ -19,7 +19,7 @@
             this.addChild(label);
 
             var tweetButton = tm.twitter.TweetButton(
-                "Score : {0}連鎖\n http://rosettahalt.github.com/ChainWave/ #ChainWave #tmlibjs".format(userData.score)
+                "Score : {0}連鎖\n http://bit.ly/MsUcIt #ChainWave #tmlibjs".format(userData.score)
             );
             tweetButton.x = app.width/2;
             tweetButton.y = 480;

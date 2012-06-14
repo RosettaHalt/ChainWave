@@ -2,7 +2,7 @@
 
 波紋を球にぶつけて連鎖させるゲームです。
 
-- [Chain Wave](http://rosettahalt.github.com/ChainWave/)
+- [Chain Wave](http://bit.ly/MsUcIt)
 
 ## ルール
 
@@ -18,7 +18,7 @@
 ## ライブラリ/素材製作者様やブログのリンクなど
 tmlib.js開発者のphi氏 ブログ
 
-- [TM Life](http://tmlife.net/)
+- [TM Life](http://bit.ly/MsWNlN)
 
 ゲーム中の効果音は全て
 
@@ -29,4 +29,4 @@ tmlib.js開発者のphi氏 ブログ
 
 私(Halt)のブログ
 
-- [なんかもう実験場](http://craft-notes.com/)
+- [なんかもう実験場](http://bit.ly/MsWGXg)
