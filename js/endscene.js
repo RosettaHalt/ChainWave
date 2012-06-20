@@ -10,20 +10,37 @@
         init: function(){
             this.superInit();
             
-            var label = tm.app.Label(32,32);
-            label.x = app.width/2;
-            label.y = app.height/2;
-            label.text = "score : "+userData.score;
-            label.width = app.width;
-            label.align = "center";
-            this.addChild(label);
-
-            var tweetButton = tm.twitter.TweetButton(
-                "Score : {0}連鎖\n http://bit.ly/MsUcIt #ChainWave #tmlibjs".format(userData.score)
-            );
-            tweetButton.x = app.width/2;
-            tweetButton.y = 480;
+            // ラベル
+            this.fromJSON({
+                children: [
+                    {
+                        type: "Label",
+                        name: "scoreLabel",
+                        x   : app.width/2,
+                        y   : app.height/2,
+                        width: 480,
+                        height: 40,
+                        text: "score : "+userData.score,
+                        align: "center",
+                        fontSize: 32
+                    }
+                ]
+            });
+            
+            // ツイートボタン
+            var msg = tm.social.Twitter.createURL({
+                type: "tweet",
+                text: "Score : {0}連鎖\n".format(userData.score),
+                hashtags: "ChainWave,tmlibjs",
+                url: "http://bit.ly/MsUcIt",
+            });
+            var tweetButton = tm.app.iPhoneButton(120, 60, "black");
+            tweetButton.setPosition(app.width/2, 480);
+            tweetButton.label.text = "Tweet";
             this.addChild(tweetButton);
+            tweetButton.onpointingstart = function() {
+                window.open(msg, "_self");
+            };
         },
     
         update: function(){
