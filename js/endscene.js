@@ -6,7 +6,7 @@
                 {
                     type:"Label",name:"scoreLabel",
                     x:240,y:360,width:480,fillStyle:"white",
-                    text:"dammy",fontSize:32,align:"center"
+                    text:"dammy",fontSize:48,align:"center"
                 }
             ]
         }
