@@ -1,8 +1,17 @@
-
 (function(ns) {
         
-    // 画像のリスト
-    var IMAGES = {
+    var LABELS = {
+        "scoreLabel": {
+            "type": "Label",
+            "name": "scoreLabel",
+            "x": 240,
+            "y": 360,
+            "width": 480,
+            "height": 40,
+            "text": "Chain Wave",
+            "align": "top",
+            "fontSize": 32,
+        }
     };
     
     ns.TitleScene = tm.createClass({
@@ -11,17 +20,24 @@
         init: function(){
             this.superInit();
             
-            this.label = tm.app.Label(32,32);
-            this.label.x = app.width/2;
-            this.label.y = app.height/2;
-            this.label.text = "Chain Wave";
-            this.label.width = app.width
-            this.addChild(this.label);
+            // ラベル
+            for(var key in LABELS){
+                var value = LABELS[key];
+                var label = tm.app.Label(value.width, value.height);
+                label.width = value.width;
+                label.height = value.height;
+                label.position.set(value.x, value.y);
+                label.text = value.text;
+                label.align = value.align;
+                label.fontSize = value.fontSize;
+                this[key] = label;
+                this.addChild(label);
+            }
         },
     
         update: function(){
             if( app.pointing.getPointingEnd() == true ){
-                var wave = Wave(this.label.x*1.5, this.label.y, 1500, 512, TITLE_WAVE_IMAGE);
+                var wave = Wave(this.scoreLabel.x*1.5, this.scoreLabel.y, 1500, 512, TITLE_WAVE_IMAGE);
                 wave.plusScale = 0.02;
                 this.addChild(wave);
 

@@ -1,7 +1,17 @@
 (function(ns) {
         
-    // 画像のリスト
-    var IMAGES = {
+    var LABELS = {
+        "scoreLabel": {
+            "type": "Label",
+            "name": "scoreLabel",
+            "x": 240,
+            "y": 360,
+            "width": 480,
+            "height": 40,
+            "text": 0,
+            "align": "center",
+            "fontSize": 32,
+        }
     };
     
     ns.EndScene = tm.createClass({
@@ -11,21 +21,19 @@
             this.superInit();
             
             // ラベル
-            this.fromJSON({
-                children: [
-                    {
-                        type: "Label",
-                        name: "scoreLabel",
-                        x   : app.width/2,
-                        y   : app.height/2,
-                        width: 480,
-                        height: 40,
-                        text: "score : "+userData.score,
-                        align: "center",
-                        fontSize: 32
-                    }
-                ]
-            });
+            for(var key in LABELS){
+                var value = LABELS[key];
+                var label = tm.app.Label(value.width, value.height);
+                label.width = value.width;
+                label.height = value.height;
+                label.position.set(value.x, value.y);
+                label.text = value.text;
+                label.align = value.align;
+                label.fontSize = value.fontSize;
+                this[key] = label;
+                this.addChild(label);
+            }
+            this.scoreLabel.text = "score : "+userData.score;
             
             // ツイートボタン
             var msg = tm.social.Twitter.createURL({
