@@ -1,4 +1,4 @@
-(function(ns) {    
+(function(ns) {
     ns.MainScene = tm.createClass({
         superClass: tm.app.Scene,
     
