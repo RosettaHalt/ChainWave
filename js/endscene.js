@@ -1,18 +1,16 @@
 (function(ns) {
         
-    var LABELS = {
-        "scoreLabel": {
-            "type": "Label",
-            "name": "scoreLabel",
-            "x": 240,
-            "y": 360,
-            "width": 480,
-            "height": 40,
-            "text": 0,
-            "align": "center",
-            "fontSize": 32,
+    var UI_DATA = {
+        LABELS: {
+            children: [
+                {
+                    type:"Label",name:"scoreLabel",
+                    x:240,y:360,width:480,fillStyle:"white",
+                    text:"dammy",fontSize:32,align:"center"
+                }
+            ]
         }
-    };
+    }
     
     ns.EndScene = tm.createClass({
         superClass: tm.app.Scene,
@@ -21,18 +19,7 @@
             this.superInit();
             
             // ラベル
-            for(var key in LABELS){
-                var value = LABELS[key];
-                var label = tm.app.Label(value.width, value.height);
-                label.width = value.width;
-                label.height = value.height;
-                label.position.set(value.x, value.y);
-                label.text = value.text;
-                label.align = value.align;
-                label.fontSize = value.fontSize;
-                this[key] = label;
-                this.addChild(label);
-            }
+            this.fromJSON(UI_DATA.LABELS);
             this.scoreLabel.text = "score : "+userData.score;
             
             // ツイートボタン
