@@ -1,7 +1,17 @@
 (function(ns) {
         
-    // 画像のリスト
-    var IMAGES = {
+    var LABELS = {
+        "scoreLabel": {
+            "type": "Label",
+            "name": "scoreLabel",
+            "x": 240,
+            "y": 360,
+            "width": 480,
+            "height": 40,
+            "text": 0,
+            "align": "center",
+            "fontSize": 32,
+        }
     };
     
     ns.EndScene = tm.createClass({
@@ -10,20 +20,35 @@
         init: function(){
             this.superInit();
             
-            var label = tm.app.Label(32,32);
-            label.x = app.width/2;
-            label.y = app.height/2;
-            label.text = "score : "+userData.score;
-            label.width = app.width;
-            label.align = "center";
-            this.addChild(label);
-
-            var tweetButton = tm.twitter.TweetButton(
-                "Score : {0}連鎖\n http://rosettahalt.github.com/ChainWave/ #ChainWave #tmlibjs".format(userData.score)
-            );
-            tweetButton.x = app.width/2;
-            tweetButton.y = 480;
+            // ラベル
+            for(var key in LABELS){
+                var value = LABELS[key];
+                var label = tm.app.Label(value.width, value.height);
+                label.width = value.width;
+                label.height = value.height;
+                label.position.set(value.x, value.y);
+                label.text = value.text;
+                label.align = value.align;
+                label.fontSize = value.fontSize;
+                this[key] = label;
+                this.addChild(label);
+            }
+            this.scoreLabel.text = "score : "+userData.score;
+            
+            // ツイートボタン
+            var msg = tm.social.Twitter.createURL({
+                type: "tweet",
+                text: "Score : {0}連鎖\n".format(userData.score),
+                hashtags: "ChainWave,tmlibjs",
+                url: "http://bit.ly/MsUcIt",
+            });
+            var tweetButton = tm.app.iPhoneButton(120, 60, "black");
+            tweetButton.setPosition(app.width/2, 480);
+            tweetButton.label.text = "Tweet";
             this.addChild(tweetButton);
+            tweetButton.onpointingstart = function() {
+                window.open(msg, "_self");
+            };
         },
     
         update: function(){
