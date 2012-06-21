@@ -1,4 +1,4 @@
-(function(ns) {
+(function(ns){
         
     var UI_DATA = {
         LABELS: {
@@ -30,7 +30,7 @@
                 this.addChild(wave);
 
                 this.addChild( tm.fade.FadeOut(
-                    app.width, app.height, "#000", 3000, function() {
+                    app.width, app.height, "#000", 3000, function(){
                         app.replaceScene(MainScene());
                     })
                 );
@@ -38,7 +38,7 @@
         },
     
         // ポーズ画面 : 別タブへ切り替わった時 / Tabキーを押した時
-        onblur: function() {
+        onblur: function(){
             app.pushScene(PauseScene(this.op));
         }
     });
