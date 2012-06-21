@@ -5,7 +5,7 @@
             children: [
                 {
                     type:"Label",name:"scoreLabel",
-                    x:240,y:360,width:480,fillStyle:"white",
+                    x:240,y:360,width:150,fillStyle:"white",
                     text:"Chain Wave",fontSize:32,align:"top"
                 }
             ]
@@ -25,7 +25,7 @@
         update: function(){
             if( app.pointing.getPointingEnd() == true ){
                 tm.sound.SoundManager.get("decide").play();
-                var wave = Wave(this.scoreLabel.x*1.5, this.scoreLabel.y, 1500, 512, TITLE_WAVE_IMAGE);
+                var wave = Wave(this.scoreLabel.x+(this.scoreLabel.width/2), this.scoreLabel.y, 1500, 512, TITLE_WAVE_IMAGE);
                 wave.plusScale = 0.02;
                 this.addChild(wave);
 
