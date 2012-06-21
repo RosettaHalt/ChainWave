@@ -34,6 +34,7 @@
         },
         
         newWave: function(x,y){
+            tm.sound.SoundManager.get("touch").play();
             var wave = Wave(x, y, 1000, 256, REVERSE_WAVE_IMAGE);
             wave.particle.interaction.setBoundingType("circle");
             this.addChild(wave);
@@ -58,7 +59,7 @@
         	return false;
         },
                 
-        // ポーズ画面 : 別タブへ切り替わった時 / Ttbキーを押した時
+        // ポーズ画面 : 別タブへ切り替わった時 / Tabキーを押した時
         onblur: function() {
             app.pushScene(PauseScene(this.bgm));
         }

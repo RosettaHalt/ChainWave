@@ -24,6 +24,7 @@
     
         update: function(){
             if( app.pointing.getPointingEnd() == true ){
+                tm.sound.SoundManager.get("decide").play();
                 var wave = Wave(this.scoreLabel.x*1.5, this.scoreLabel.y, 1500, 512, TITLE_WAVE_IMAGE);
                 wave.plusScale = 0.02;
                 this.addChild(wave);
@@ -36,7 +37,7 @@
             }
         },
     
-        // ポーズ画面 : 別タブへ切り替わった時 / Ttbキーを押した時
+        // ポーズ画面 : 別タブへ切り替わった時 / Tabキーを押した時
         onblur: function() {
             app.pushScene(PauseScene(this.op));
         }

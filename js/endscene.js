@@ -25,7 +25,7 @@
             // ツイートボタン
             var msg = tm.social.Twitter.createURL({
                 type: "tweet",
-                text: "Score : {0}連鎖\n".format(userData.score),
+                text: "Chain Wave\nScore : {0}連鎖\n".format(userData.score),
                 hashtags: "ChainWave,tmlibjs",
                 url: "http://bit.ly/MsUcIt",
             });
@@ -49,7 +49,7 @@
             }
         },
 
-        // ポーズ画面 : 別タブへ切り替わった時 / Ttbキーを押した時
+        // ポーズ画面 : 別タブへ切り替わった時 / Tabキーを押した時
         onblur: function() {
             app.pushScene(PauseScene());
         }
