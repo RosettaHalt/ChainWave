@@ -84,5 +84,5 @@ var Circle = tm.createClass({
         c.strokeStyle = "white";
         c.lineWidth = 2;
         c.strokeCircle(0, 0, this.radius+1);
-    },
+    }
 });

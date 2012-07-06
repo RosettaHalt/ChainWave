@@ -27,7 +27,7 @@
                 type: "tweet",
                 text: "Chain Wave\nScore : {0}連鎖\n".format(userData.score),
                 hashtags: "ChainWave,tmlibjs",
-                url: "http://bit.ly/MsUcIt",
+                url: "http://bit.ly/MsUcIt"
             });
             var tweetButton = tm.app.iPhoneButton(120, 60, "black");
             tweetButton.setPosition(app.width/2, 480);
