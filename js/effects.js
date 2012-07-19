@@ -4,7 +4,7 @@
 var Wave = tm.createClass({
     superClass: tm.app.CanvasElement,
 
-    init: function(x, y, time, size, img) {
+    init: function(x, y, time, size, img){
         this.superInit();
         this.x = x;
         this.y = y;
@@ -22,7 +22,7 @@ var Wave = tm.createClass({
         this.fadeOut(time);
     },
 
-    fadeOut: function(time) {
+    fadeOut: function(time){
         this.animation.addTween({
             prop: "alpha",
             begin: 1,
@@ -31,7 +31,7 @@ var Wave = tm.createClass({
         });
     },
 
-    onanimationend: function() {
+    onanimationend: function(){
         this.remove();
     }
 });
