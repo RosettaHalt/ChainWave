@@ -1,31 +1,41 @@
-var PauseScene = tm.createClass({
-    superClass: tm.app.Scene,
-    
-    init: function(audio){
-        this.superInit();
-        this.interaction;
+(function(ns){
+    ns.PauseScene = tm.createClass({
+        superClass: tm.app.Scene,
         
-        var filter = tm.app.Sprite(app.width, app.height);
-        filter.setPosition(app.width/2, app.height/2);
-        filter.canvas.clearColor("rgba(0, 0, 0, 0.75)");
-        this.addChild(filter);
+        init: function(audio){
+            this.superInit();
+            this.interaction;
             
-        app.stop();
+            this.filter = tm.app.Sprite(app.width, app.height);
+            this.filter.setPosition(app.width/2, app.height/2);
+            this.filter.canvas.clearColor("rgba(0, 0, 0, 0.75)");
+            this.addChild(this.filter);
+                
+            app.stop();
+            
+            this.audio = audio;
+            if(this.audio){ this.audio.pause(); }
+        },
         
-        this.audio = audio; 
-        if(this.audio){ this.audio.pause(); }
-    },
-    
-    onfocus: function(){
-        app.start();
-    },
-    
-    onblur: function(){
-        app.stop();
-    },
-    
-    onmousedown: function(){
-        if(this.audio){ this.audio.play(); }
-        app.popScene();
-    }
-});
+        onfocus: function(){
+            app.start();
+        },
+        
+        onblur: function(){
+            app.stop();
+        },
+        
+        onmousedown: function(){
+            this.filter.animation.addTween({
+                prop: "alpha",
+                begin: this.alpha,
+                finish: 0.0,
+                duration: 1000,
+                onfinish: function() {
+                    if(this.audio){ this.audio.play(); }
+                    app.popScene();
+                }.bind(this)
+            });
+        }
+    });
+})(window);
