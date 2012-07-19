@@ -1,4 +1,4 @@
-(function(ns) {
+(function(ns){
     ns.MainScene = tm.createClass({
         superClass: tm.app.Scene,
     
@@ -26,7 +26,7 @@
             if(this.touchFlag == false){ ++this.noWaveTime; }
             if(this.noWaveTime > 100){
                 this.addChild( tm.fade.FadeOut(
-                    app.width, app.height, "#000", 1000, function() {
+                    app.width, app.height, "#000", 1000, function(){
                         app.replaceScene(EndScene());
                     })
                 );
@@ -34,8 +34,8 @@
         },
         
         newWave: function(x,y){
+            tm.sound.SoundManager.get("touch").play();
             var wave = Wave(x, y, 1000, 256, REVERSE_WAVE_IMAGE);
-            wave.particle.interaction.setBoundingType("circle");
             this.addChild(wave);
             
             var self = this;
@@ -58,8 +58,8 @@
         	return false;
         },
                 
-        // ポーズ画面 : 別タブへ切り替わった時 / Ttbキーを押した時
-        onblur: function() {
+        // ポーズ画面 : 別タブへ切り替わった時 / Tabキーを押した時
+        onblur: function(){
             app.pushScene(PauseScene(this.bgm));
         }
     });
@@ -79,10 +79,10 @@ var Circle = tm.createClass({
         this.alpha = 0.75;
     },
     
-    draw: function(c) {
+    draw: function(c){
         c.fillCircle(0, 0, this.radius);
         c.strokeStyle = "white";
         c.lineWidth = 2;
         c.strokeCircle(0, 0, this.radius+1);
-    },
+    }
 });
