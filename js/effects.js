@@ -10,8 +10,8 @@ var Wave = tm.createClass({
         this.y = y;
         this.plusScale = 0.8/30;
 
-        this.particle = tm.app.Sprite(size, size);
-        this.particle.setImage(img);
+        this.particle = tm.app.Shape(size, size);
+        this.particle.canvas = img;
         this.particle.scaleX = this.particle.scaleY = 0.2;
         var self = this;
         this.particle.update = function(){
