@@ -1,5 +1,5 @@
 (function(ns){
-        
+
     var UI_DATA = {
         LABELS: {
             children: [
@@ -11,19 +11,19 @@
             ]
         }
     }
-    
+
     ns.EndScene = tm.createClass({
         superClass: tm.app.Scene,
-    
+
         init: function(){
             this.superInit();
-            
+
             // ラベル
             this.fromJSON(UI_DATA.LABELS);
             this.scoreLabel.text = "score : "+userData.score;
 
             // タイトルボタン
-            var iphoneButton = tm.app.iPhoneButton(120, 60, "black");
+            var iphoneButton = tm.app.GlossyButton(120, 60, "black");
             iphoneButton.setPosition(120,640);
             iphoneButton.label.text = "Title";
             this.addChild(iphoneButton);
@@ -34,7 +34,7 @@
                     })
                 );
             };
-            
+
             // ツイートボタン
             var msg = tm.social.Twitter.createURL({
                 type: "tweet",
@@ -42,7 +42,7 @@
                 hashtags: "ChainWave,tmlibjs",
                 url: "http://bit.ly/MsUcIt"
             });
-            var tweetButton = tm.app.iPhoneButton(120, 60, "black");
+            var tweetButton = tm.app.GlossyButton(120, 60, "black");
             tweetButton.setPosition(360, 640);
             tweetButton.label.text = "Tweet";
             this.addChild(tweetButton);
@@ -50,7 +50,7 @@
                 window.open(msg, "_self");
             };
         },
-    
+
         update: function(){
         },
 
